@@ -1,0 +1,366 @@
+/* styles.css
+   Daily Devotions — full site style guide
+   Fonts expected: 'Great Vibes' (calligraphy), 'Cormorant Garamond', 'Merriweather' or Georgia (serif)
+*/
+
+/* ---------- Global & variables ---------- */
+:root{
+  --max-width:1200px;
+  --page-pad:20px;
+  --bg:#F7F5EF;
+  --text:#222;
+  --muted:#6b5848;
+  --accent:#8A6B4E;
+  --highlight:#D9B778;
+  --shadow: 0 6px 18px rgba(17,17,17,0.06);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Georgia, "Times New Roman", serif;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------- Typography helpers ---------- */
+.calligraphy {
+  font-family: 'Great Vibes', serif; /* calligraphy / elegant display */
+  font-weight:600;
+}
+.calligraphy-light {
+  font-family:'Great Vibes', serif;
+  font-weight:300;
+}
+.serif {
+  font-family: Cormorant Garamond, Merriweather, Georgia, serif;
+}
+
+/* ---------- Layout container ---------- */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding: 24px;
+}
+
+/* ---------- Top header / nav ---------- */
+/* Title at left (links to index.html). Nav at right. */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  padding:16px 28px;
+  position:fixed; /* make header float above content */
+  top:0;
+  left:0;
+  z-index:50; /*higher than hero */
+  background:rgba(255,255,255,0.7); /* translucent so hero shows through slightly */
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  height:72px; /* set exact header height */
+}
+.site-title{
+  font-size:1.3rem;
+  color:var(--accent);
+  text-decoration:none;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:700;
+}
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+.main-nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:6px;
+  font-size:16px;
+  transition: all .15s ease;
+}
+.main-nav a:hover{ background: rgba(138,107,78,0.06); color:var(--accent) }
+
+/* ---------- Hero/banner ---------- */
+/* hero is directly beneath header and anchored to the top of its image content */
+.hero {
+  width:100%;
+  height:360px; /* fixed height */
+  background-size:cover;
+  background-position: top center; /* anchor top */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  margin:0; /* remove default margins */
+  z-index:1; /* make sure it's under the header */
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(0,0,0,0.12));
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;
+  z-index:5;
+  text-align:center;
+  color: #fff;
+  padding:28px;
+}
+.hero .tagline{
+  font-size:60px;
+  line-height:1;
+  margin-bottom:8px;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.45);
+  font-family:'Great Vibes', serif;
+}
+.hero .subtag{
+  font-family: Cormorant Garamond, Merriweather, Georgia, serif;
+  font-size:32px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* ---------- Index: three square feature blocks ---------- */
+.feature-row{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  align-items:start;
+  margin-top:18px;
+}
+.feature-card{
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+}
+.feature-card .feat-image{
+  width:100%;
+  aspect-ratio:1/1; /* square */
+  overflow:hidden;
+}
+.feature-card .feat-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.feature-card .feat-ref{
+  font-size:12px;
+  padding:8px 12px;
+  color: #444;
+  background: rgba(247,245,239,0.95);
+  font-style:italic;
+}
+.feature-card .feat-body{
+  padding:14px;
+}
+.feat-title{
+  font-family:'Great Vibes', serif;
+  font-size:32px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.feat-sub{
+  font-family:Cormorant Garamond, Merriweather, Georgia, serif;
+  color:var(--muted);
+  font-size:20px;
+}
+
+/* ---------- Divider ---------- */
+.trans-divider{
+  width:80%;
+  height:2px;
+  margin:28px auto;
+  background: linear-gradient(90deg, rgba(138,107,78,0.12), rgba(217,183,120,0.06));
+  border-radius:2px;
+}
+
+/* ---------- Stacked text blocks ---------- */
+.stack-section{
+  max-width:900px;
+  margin:30px auto 60px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.stack-block{
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
+.alt-row h2{
+  font-family:'Great Vibes', serif;
+  font-size:40px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.stack-block h3{
+  font-family:'Great Vibes', serif;
+  font-size:36px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.stack-block h4{
+  margin-bottom:8px;
+  font-family:'Great Vibes', serif;
+  font-size:30px;
+  color:var(--accent);
+}
+.stack-block p{
+  font-family:Cormorant Garamond, Merriweather, Georgia, serif;
+  font-size:20px;
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* ---------- Year pages: alternating image/text blocks ---------- */
+.year-blocks{
+  max-width:var(--max-width);
+  margin:30px auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:0 16px;
+}
+.alt-row{
+  display:flex;
+  gap:20px;
+  align-items:stretch;
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.alt-row.reverse{ flex-direction:row-reverse; }
+.alt-row .alt-image{
+  flex:0 0 42%;
+  min-height:220px;
+  overflow:hidden;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.alt-row .alt-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* for most header images */
+  display:block;
+}
+.alt-row .alt-image.contain img{
+  object-fit:contain; /* for images like nativity-sketch which should be scaled down */
+}
+.alt-row .alt-content{
+  flex:1;
+  padding:18px;
+}
+.alt-row h2{
+  font-family:'Great Vibes', serif;
+  font-size:38px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.alt-row h3{
+  font-family:'Great Vibes', serif;
+  font-size:32px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.alt-row h4{
+  font-family:'Great Vibes', serif;
+  font-weight:300;
+  font-size:28px;
+  margin-bottom:10px;
+  color:var(--muted);
+}
+.alt-row .link-list{ list-style:none; padding-left:0; }
+.alt-row .link-list li{ margin:8px 0; }
+.alt-row .link-list a{ text-decoration:none; color:var(--text); }
+.alt-row .link-list a:hover{ color:var(--accent) }
+
+/* ---------- Weekly page: calendar & content ---------- */
+.week-page{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:30px 18px;
+}
+.week-calendar{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.week-calendar a{
+  text-decoration:none;
+  font-size:24px;
+  padding:10px 12px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+  color:var(--muted);
+  font-family:'Cormorant Garamond', serif;
+}
+.week-calendar a:hover{ color:var(--accent) }
+
+.day-section{
+  margin:26px 0;
+  background:#fff;
+  padding:18px;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+}
+.day-section h3{
+  font-family:'Great Vibes', serif;
+  font-size:32px;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+.media-embed{
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:var(--shadow);
+  margin:18px auto;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  overflow:hidden;
+}
+.media-embed iframe{
+  width:100%;
+  border:0; 
+  display:block;
+}
+
+/* BibleGateway iframe default heights */
+.bible-embed-small{ height:260px; }
+.bible-embed-medium{ height:340px; }
+
+/* ---------- Utilities ---------- */
+.center{ text-align:center; }
+.small{ font-size:13px; color:#555; }
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .feature-row{ grid-template-columns: 1fr; }
+  .alt-row{ flex-direction:column; }
+  .alt-row .alt-image{ flex-basis:auto; height:240px }
+  .hero .tagline{ font-size:36px }
+}
+@media (max-width:520px){
+  .hero{ min-height:220px }
+  .hero .tagline{ font-size:32px }
+  .hero .subtag{ font-size:20px }
+  .main-nav ul{ gap:10px; font-size:14px }
+}
